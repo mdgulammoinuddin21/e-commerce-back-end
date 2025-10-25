@@ -8,8 +8,8 @@
         <version>2.4.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.youtube</groupId>
-    <artifactId>jwt</artifactId>
+    <groupId>com</groupId>
+    <artifactId>ecommerce</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>e-commerce-springboot</name>
     <description>Demo project to understand JWT token + role based authentication</description>

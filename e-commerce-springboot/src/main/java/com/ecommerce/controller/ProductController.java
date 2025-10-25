@@ -7,7 +7,9 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,9 +59,22 @@ public class ProductController {
 	    return imageModels;
 	}
 	
+	
 	@GetMapping({"/getAllProducts"})
 	public List<Product> getAllProducts() {
 		return productService.getAllProducts();
+	}
+	
+	@PreAuthorize("hasRole('Admin')")
+	@GetMapping({"/getProductDetailsById/{productId}"})
+	public Product getProductDetailsById(@PathVariable("productId") Integer productId) {
+	    return productService.getProductDetailsById(productId);
+	}
+
+	@PreAuthorize("hasRole('Admin')")
+	@DeleteMapping({"/deleteProductDetails/{productId}"})
+	public void deleteProductDetails(@PathVariable("productId") Integer productId) {
+		productService.deleteProductDetails(productId);
 	}
 
 }
