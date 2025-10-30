@@ -22,12 +22,6 @@ public class ProductService {
 		return (List<Product>) productDao.findAll();
 	}
 	
-	public void deleteProductDetails(Integer productId) {
-		productDao.deleteById(productId);
-	}
-
-	public Product getProductDetailsById(Integer productId) {
-		// TODO Auto-generated method stub
-		return productDao.findById(productId).get();
-	}
+	
+	
 }
