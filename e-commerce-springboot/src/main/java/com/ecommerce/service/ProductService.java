@@ -1,5 +1,6 @@
 package com.ecommerce.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,19 @@ public class ProductService {
 		// TODO Auto-generated method stub
 		return productDao.findById(productId).get();
 	}
+	
+	public List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId) {
+	    if (isSingleProductCheckout) {
+	        // We are going to buy a single product
+	        List<Product> list = new ArrayList<>();
+	        Product product = productDao.findById(productId).get();
+	        list.add(product);
+	        return list;
+	    } else {
+	        // We are going to checkout entire cart
+	        
+	    }
+	    return new ArrayList<>();
+	}
+
 }

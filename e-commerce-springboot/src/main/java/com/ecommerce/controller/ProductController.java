@@ -66,14 +66,22 @@ public class ProductController {
 	}
 	
 	@GetMapping({"/getProductDetailsById/{productId}"})
-	public Product getProductDetailsById(@PathVariable("productId") Integer productId) {
+	public Product getProductDetailsById(@PathVariable Integer productId) {
 	    return productService.getProductDetailsById(productId);
 	}
 
 	@PreAuthorize("hasRole('Admin')")
 	@DeleteMapping({"/deleteProductDetails/{productId}"})
-	public void deleteProductDetails(@PathVariable("productId") Integer productId) {
+	public void deleteProductDetails(@PathVariable Integer productId) {
 		productService.deleteProductDetails(productId);
 	}
+	
+	@PreAuthorize("hasRole('User')")
+	@GetMapping("/getProductDetails/{isSingleProductCheckout}/{productId}")
+	public List<Product> getProductDetails(@PathVariable boolean isSingleProductCheckout,
+	                                       @PathVariable Integer productId) {
+	    return productService.getProductDetails(isSingleProductCheckout, productId);
+	}
+
 
 }

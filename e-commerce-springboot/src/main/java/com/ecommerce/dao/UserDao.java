@@ -7,4 +7,5 @@ import com.ecommerce.entity.User;
 
 @Repository
 public interface UserDao extends CrudRepository<User, String> {
+	
 }
