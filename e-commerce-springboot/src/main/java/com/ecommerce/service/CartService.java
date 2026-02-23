@@ -1,5 +1,8 @@
 package com.ecommerce.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,12 @@ public class CartService {
 	    if (username != null) {
 	        user = userDao.findById(username).get();
 	    }
+	    List<Cart> carts = cartDao.findByUser(user);//returns all carts from DB
+	    List<Cart> filteredCarts = carts.stream().filter(cart -> cart.getProduct().getProductId() == productId).collect(Collectors.toList());
+	    
+	    if(filteredCarts.size() > 0) {
+	    	return null;
+	    }
 
 	    if (product != null && user != null) {
 	        Cart cart = new Cart(product, user);
@@ -39,6 +48,17 @@ public class CartService {
 	    }
 
 	    return null;
+	}
+	
+	public List<Cart> getCartDetails() {
+	    String username = JwtRequestFilter.CURRENT_USER;
+	    User user = userDao.findById(username).get();
+	    return cartDao.findByUser(user);
+	}
+
+	public void deleteCartItem(Integer cartId) {
+		// TODO Auto-generated method stub
+		cartDao.deleteById(cartId);
 	}
 
 }

@@ -26,6 +26,11 @@ public class Cart {
 		this.user = user;
 	}
 
+	public Cart() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getCartId() {
 		return cartId;
 	}
