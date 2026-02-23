@@ -42,5 +42,6 @@ public class OrderDetailController {
 	@GetMapping({"/markOrderAsDelivered/{orderId}"})
 	public void markOrderAsDelivered(@PathVariable Integer orderId) {
 		orderDetailService.markOrderAsDelivered(orderId);
+		
 	}
 }
