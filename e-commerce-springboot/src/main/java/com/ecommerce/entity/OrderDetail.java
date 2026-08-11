@@ -18,6 +18,7 @@ public class OrderDetail {
     private String orderAlternateContactNumber;
     private String orderStatus;
     private Double orderAmount;
+    private String transactionId;
     @OneToOne
     private Product product;
     @OneToOne
@@ -32,8 +33,11 @@ public class OrderDetail {
 
 	
 
+	
+	
 	public OrderDetail(String orderFullName, String orderFullAddress, String orderContactNumber,
-			String orderAlternateContactNumber, String orderStatus, Double orderAmount, Product product, User user) {
+			String orderAlternateContactNumber, String orderStatus, Double orderAmount, String transactionId,
+			Product product, User user) {
 		super();
 		this.orderFullName = orderFullName;
 		this.orderFullAddress = orderFullAddress;
@@ -41,8 +45,21 @@ public class OrderDetail {
 		this.orderAlternateContactNumber = orderAlternateContactNumber;
 		this.orderStatus = orderStatus;
 		this.orderAmount = orderAmount;
+		this.transactionId = transactionId;
 		this.product = product;
 		this.user = user;
+	}
+
+
+
+
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
 	}
 
 

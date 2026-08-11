@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.entity.OrderDetail;
 import com.ecommerce.entity.OrderInput;
+import com.ecommerce.entity.TransactionDetails;
 import com.ecommerce.service.OrderDetailService;
 
 @RestController
@@ -33,9 +34,9 @@ public class OrderDetailController {
 	}
 	
 	@PreAuthorize("hasRole('Admin')")
-	@GetMapping({"/getAllOrderDetails"})
-	public List<OrderDetail> getAllOrderDetails() {
-		return orderDetailService.getAllOrderDetails();
+	@GetMapping({"/getAllOrderDetails/{status}"})
+	public List<OrderDetail> getAllOrderDetails(@PathVariable String status) {
+		return orderDetailService.getAllOrderDetails(status);
 	}
 	
 	@PreAuthorize("hasRole('Admin')")
@@ -43,5 +44,11 @@ public class OrderDetailController {
 	public void markOrderAsDelivered(@PathVariable Integer orderId) {
 		orderDetailService.markOrderAsDelivered(orderId);
 		
+	}
+	
+	@PreAuthorize("hasRole('User')")
+	@GetMapping({"/createTransaction/{amount}"})
+	public TransactionDetails createTransaction(@PathVariable Double amount) {
+		return orderDetailService.createTransaction(amount);		
 	}
 }

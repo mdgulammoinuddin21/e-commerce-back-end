@@ -8,7 +8,17 @@ public class OrderInput {
     private String fullAddress;
     private String contactNumber;
     private String alternateContactNumber;
-    private List<OrderProductQuantity> orderProductQuantityList;
+    private String transactionId;
+
+	private List<OrderProductQuantity> orderProductQuantityList;
+	
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
 
     // Getters and Setters
     public String getFullName() {
